@@ -1,20 +1,22 @@
 from aoc.puzzle import Puzzle
+import itertools
 
 class Part2(Puzzle):
-    def is_safe_dampened(self, levels: list) -> bool:
+    def is_safe_dampened(self, levels: list, damper = 1) -> bool:
         '''
         problem damper tolerates a single bad level in what would be an otherwise safe report
-        brute force all sub lists of length - 1 for first safe dampened levels
-        :param levels:
-        :return: if any problem damped levels are safe
+        brute force all sub lists of levels down to length - 1 to determine safety within damper tolerance.
+        :param levels: list of int levels
+        :param damper: tolerance for number of bad levels
+        :return: if any problem levels are safe within tolerance of the damper
         '''
-        return any(self.is_safe(levels[:i] + levels[i+1:]) for i in range(len(levels)))
+        return any(self.is_safe(list(combo)) for tolerance in range(1 + damper) for combo in itertools.combinations(levels, len(levels) - tolerance))
 
     def is_safe(self, levels: list) -> bool:
         '''
-        any two adjacent numbers differ by at least one and at most 3
-        :param diffs: list of integer difference between sequential levels
-        :return: if the record is safe
+        any two adjacent numbers differ by at least 1 and at most 3
+        :param levels: list of int levels
+        :return: if the levels are safe
         '''
         level_diffs = [y - x for x, y in zip(levels, levels[1:])]
         if all(0 < diff for diff in level_diffs):
@@ -36,7 +38,7 @@ class Part2(Puzzle):
         reports = [[int(num) for num in report.strip().split()] for report in input.strip().splitlines() ]
         print(reports)
 
-        safe_reports = [self.is_safe(report) or self.is_safe_dampened(report) for report in reports]
+        safe_reports = [self.is_safe_dampened(report) for report in reports]
         print(safe_reports)
 
         return sum(safe_reports)
