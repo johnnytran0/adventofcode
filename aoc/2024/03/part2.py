@@ -49,7 +49,6 @@ if __name__ == '__main__':
     puzzle = PuzzlePart2(2024, 3)
 
     example_input = "xmul(2,4)&mul[3,7]!^don't()_mul(5,5)+mul(32,64](mul(11,8)undo()?mul(8,5))"
-    print(puzzle.solve(example_input))
     assert 48 == puzzle.solve(example_input)
 
     answer = puzzle.solve(puzzle.input())
