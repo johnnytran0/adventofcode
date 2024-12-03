@@ -4,10 +4,14 @@ import re
 class PuzzlePart1(Part1):
     def eval_mul(self, mul: str) -> int:
         """
-        mul(1,2)
-        mul(123,456)
-        :param mul:
-        :return:
+        the goal of the program is just to multiply some numbers.
+        mul instructions look like mul(X,Y), where X and Y are each 1-3 digit numbers.
+
+        examples:
+            mul(1,2)
+            mul(123,456)
+        :param mul: valid mul instruction string
+        :return: int value of evaluating the instruction
         """
         # parse
         args = mul[4:-1].split(',')
@@ -17,10 +21,8 @@ class PuzzlePart1(Part1):
 
     def solve(self, input_str: str):
         """
-        the goal of the program is just to multiply some numbers.
-        It does that with instructions like mul(X,Y), where X and Y are each 1-3 digit numbers.
-        there are also many invalid characters that should be ignored, even if they look like part of a mul instruction.
         Scan the corrupted memory for uncorrupted mul instructions.
+        there are also many invalid characters that should be ignored, even if they look like part of a mul instruction.
         What do you get if you add up all the results of the multiplications?
 
         :param input_str: corrupted string to parse valid mul instructions
