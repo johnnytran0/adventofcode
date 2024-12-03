@@ -8,12 +8,11 @@ class Puzzle(ABC):
         self.year = year
         self.day = day
         self.part = part
-        self.year = year
         self.input_file_path = input_file_path
         super().__init__()
 
     @abstractmethod
-    def solve(self, input: str):
+    def solve(self, input_str: str):
         pass
 
     def input(self) -> str:
@@ -28,3 +27,19 @@ class Puzzle(ABC):
             return read_input_file(self.input_file_path)
         else:
             raise Exception('input_file_path is not specified')
+
+class Part1(Puzzle):
+    def __init__(self, year: int, day: int, input_file_path = None) -> None:
+        super().__init__(year, day, 1, input_file_path)
+
+    @abstractmethod
+    def solve(self, input_str: str):
+        pass
+
+class Part2(Puzzle):
+    def __init__(self, year: int, day: int, input_file_path = None) -> None:
+        super().__init__(year, day, 2, input_file_path)
+
+    @abstractmethod
+    def solve(self, input_str: str):
+        pass

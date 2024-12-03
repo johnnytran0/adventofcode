@@ -15,7 +15,7 @@ class Part1(Puzzle):
         # 0 in record
             return False
 
-    def solve(self, input: str):
+    def solve(self, input_str: str):
         '''
         one report per line, consisting of a list of numbers called levels that are space separated.
         a report only counts as safe if both of the following are true:
@@ -23,7 +23,7 @@ class Part1(Puzzle):
         * any two adjacent levels differ by at least one and at most 3
         how many reports are safe?
         '''
-        reports = [[int(num) for num in report.strip().split()] for report in input.strip().splitlines() ]
+        reports = [[int(num) for num in report.strip().split()] for report in input_str.strip().splitlines()]
         print(reports)
 
         safe_reports = [self.is_safe([y-x for x,y in zip(report, report[1:])]) for report in reports]

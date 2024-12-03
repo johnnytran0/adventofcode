@@ -2,14 +2,14 @@ from aoc.puzzle import Puzzle
 import bisect
 
 class Part2(Puzzle):
-    def solve(self, input: str):
+    def solve(self, input_str: str):
         '''
         Calculate a total similarity score by adding up each number in the left list after multiplying it by the number of times that number appears in the right list.
         '''
 
         # parse input to left and right list
         left, right = [], []
-        lines = input.strip().split('\n')
+        lines = input_str.strip().split('\n')
         for line in lines:
             if line:
                 line_split = line.strip().split(' ')

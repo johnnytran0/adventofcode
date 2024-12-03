@@ -2,7 +2,7 @@ from aoc.puzzle import Puzzle
 import bisect
 
 class Part1(Puzzle):
-    def solve(self, input: str):
+    def solve(self, input_str: str):
         '''
         pair up the numbers and measure how far apart they are
         add up all those distances to find the total distance between the left and right list
@@ -10,7 +10,7 @@ class Part1(Puzzle):
 
         # parse input to left and right list
         left, right = [], []
-        lines = input.strip().split('\n')
+        lines = input_str.strip().split('\n')
         for line in lines:
             if line:
                 line_split = line.strip().split(' ')
