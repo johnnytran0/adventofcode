@@ -47,13 +47,13 @@ class PuzzlePart1(Part1):
                     if first_row <= r-3 and c+3 <= last_col and eq_xmas([matrix[r][c], matrix[r-1][c+1], matrix[r-2][c+2], matrix[r-3][c+3]]):
                         xmas += 1
                     # 135 deg
-                    if  r+3 <= last_row and c+3 <= last_col and eq_xmas([matrix[r][c], matrix[r+1][c+1], matrix[r+2][c+2], matrix[r+3][c+3]]):
+                    if first_row <= r-3 and first_col <= c-3 and eq_xmas([matrix[r][c], matrix[r-1][c-1], matrix[r-2][c-2], matrix[r-3][c-3]]):
                         xmas += 1
                     # 225 deg
-                    if r+3 <= last_row and first_col <= c-3 and eq_xmas([matrix[r][c], matrix[r+1][c-1], matrix[r+2][c-2], matrix[r+3][c-3]]):
+                    if r + 3 <= last_row and first_col <= c - 3 and eq_xmas([matrix[r][c], matrix[r + 1][c - 1], matrix[r + 2][c - 2], matrix[r + 3][c - 3]]):
                         xmas += 1
                     ## 315 deg
-                    if first_row <= r-3 and first_col <= c-3 and eq_xmas([matrix[r][c], matrix[r-1][c-1], matrix[r-2][c-2], matrix[r-3][c-3]]):
+                    if r+3 <= last_row and c+3 <= last_col and eq_xmas([matrix[r][c], matrix[r+1][c+1], matrix[r+2][c+2], matrix[r+3][c+3]]):
                         xmas += 1
 
         return xmas
