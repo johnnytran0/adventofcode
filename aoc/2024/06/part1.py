@@ -101,7 +101,7 @@ class PuzzlePart1(Part1):
 
         pprint.pprint(rotated_map)
 
-        return len([x for x in flatten(rotated_map) if x == visited])
+        return sum(1 for x in flatten(rotated_map) if x == visited)
 
 
 if __name__ == '__main__':
