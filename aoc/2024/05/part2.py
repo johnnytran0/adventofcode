@@ -56,11 +56,9 @@ class PuzzlePart2(Part2):
         page_ordering_rules = [tuple(map(int, l.strip().split('|'))) for l in sections[0].splitlines() if l.strip()]
 
         rules_dict = defaultdict(set)
-        rules0_dict = defaultdict(set)
         # keys must not occur before elements in value
         for x, y in page_ordering_rules:
             rules_dict[y].add(x)
-            rules0_dict[x].add(y)
 
         pages_to_produce = [[int(l2) for l2 in l.strip().split(',')] for l in sections[1].splitlines() if l.strip()]
         incorrectly_ordered_updates = [reorder(p, rules_dict) for p in pages_to_produce if not is_correct(p, rules_dict)]
