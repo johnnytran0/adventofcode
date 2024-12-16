@@ -24,15 +24,12 @@ pip install -r requirements.txt
 ```
 
 ## Template
-```python
-from aoc.puzzle import Puzzle
+Create templates for today
+```bash
+python3 main.py
+```
 
-class AoC(Puzzle):
-    def solve(self, input: str):
-        # logic
-        pass
-
-if __name__ == '__main__':
-    puzzle = AoC(2024, 1, 1)
-    answer = puzzle.solve(puzzle.input())
+Create templates for specific date
+```bash
+python3 main.py --year 2038 --day 25
 ```
